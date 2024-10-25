@@ -1,0 +1,235 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Website</title>
+    <link rel="stylesheet" href="~/garage/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sales">Sales</a></li>
+            <li><a href="#services-section">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section home">
+        <h1>Welcome to Our Garage</h1>
+        <p>Your one-stop solution for all your automotive needs. We provide expert repairs, regular maintenance, and customized services to keep your vehicle running smoothly.</p>
+    </section>
+
+
+    <!-- Cars for Sale Section -->
+    <section id="sales" class="section sales">
+        <h2 style="margin-left: 47%; position: absolute;margin-bottom: 30px;font-family: fantasy;font-size: 35px;">Cars for Sale</h2>
+        <div class="sales-container">
+            <!-- Filtreleme Alanı -->
+            <aside class="filter-section">
+                <h3>Filter Cars</h3>
+                <form>
+                    <!-- Marka Filtreleme -->
+                    <label for="brand">Brand</label>
+                    <select id="brand" name="brand">
+                        <option value="all">All</option>
+                        <option value="ford">Ford</option>
+                        <option value="tesla">Tesla</option>
+                        <option value="bmw">BMW</option>
+                    </select>
+
+                    <!-- Yıl Filtreleme -->
+                    <label for="year">Year</label>
+                    <select id="year" name="year">
+                        <option value="all">All</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                    </select>
+
+                    <!-- Yakıt Türü Filtreleme -->
+                    <label for="fuel">Fuel Type</label>
+                    <select id="fuel" name="fuel">
+                        <option value="all">All</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="electric">Electric</option>
+                        <option value="gasoline">Gasoline</option>
+                    </select>
+
+                    <!-- Fiyat Aralığı Filtreleme -->
+                    <label for="price">Price Range</label>
+                    <input type="range" id="price" name="price" min="10000" max="100000" step="1000" onchange="updatePrice(this.value)">
+                    <span id="price-output">$10000 - $100000</span>
+
+                    <button type="submit" onclick="applyFilters()">Apply Filters</button>
+                </form>
+            </aside>
+
+            <!-- Araç Listesi -->
+            <div class="car-list">
+                <div class="car-list">
+                    <div class="car-item"
+                         data-name="Ford Mustang"
+                         data-image="~/garage/images/car1.jpg"
+                         data-kilometre="50,000 KM"
+                         data-year="2020"
+                         data-motor="5.0L V8"
+                         data-fuel="Dizel"
+                         data-price="$40,000"
+                         data-gallery="images/car2.jpg,images/car3.jpg"
+                         onclick="openOverlay('Ford Mustang', '~/garage/images/car1.jpg', 'Kilometre: 50,000 KM<br>Yıl: 2020<br>Motor Gücü: 5.0L V8<br>Yakıt Türü: Dizel', '$40,000', ['images/car2.jpg', 'images/car3.jpg'])">
+                        <img src="~/garage/images/car1.jpg" alt="Car 1">
+                        <h3>Ford Mustang</h3>
+                        <p class="price">Price: $40,000</p>
+                    </div>
+
+                    <div class="car-item"
+                         data-name="Tesla Model S"
+                         data-image="~/garage/images/car2.jpg"
+                         data-kilometre="30,000 KM"
+                         data-year="2021"
+                         data-motor="100 kWh Elektrik"
+                         data-fuel="Elektrik"
+                         data-price="$75,000"
+                         data-gallery="images/car1.jpg,images/car3.jpg"
+                         onclick="openOverlay('Tesla Model S', '../../garage/images/car2.jpg', 'Kilometre: 30,000 KM<br>Yıl: 2021<br>Motor Gücü: 100 kWh Elektrik<br>Yakıt Türü: Elektrik', '$75,000', ['images/car1.jpg', 'images/car3.jpg'])">
+                        <img src="~/garage/images/car2.jpg" alt="Car 2">
+                        <h3>Tesla Model S</h3>
+                        <p class="price">Price: $75,000</p>
+                    </div>
+
+                    <div class="car-item"
+                         data-name="BMW M3"
+                         data-image="~/garage/images/car3.jpg"
+                         data-kilometre="60,000 KM"
+                         data-year="2019"
+                         data-motor="3.0L Inline-6"
+                         data-fuel="Benzin"
+                         data-price="$70,000"
+                         data-gallery="images/car1.jpg,images/car2.jpg"
+                         onclick="openOverlay('BMW M3', '../../garage/images/car3.jpg', 'Kilometre: 60,000 KM<br>Yıl: 2019<br>Motor Gücü: 3.0L Inline-6<br>Yakıt Türü: Benzin', '$70,000', ['images/car1.jpg', 'images/car2.jpg'])">
+                        <img src="~/garage/images/car3.jpg" alt="Car 3">
+                        <h3>BMW M3</h3>
+                        <p class="price">Price: $70,000</p>
+                    </div>
+
+                    <div class="car-item"
+                         data-name="Chevrolet Camaro"
+                         data-image="~/garage/images/chevrolet.png"
+                         data-kilometre="45,000 KM"
+                         data-year="2018"
+                         data-motor="6.2L V8"
+                         data-fuel="Benzin"
+                         data-price="$50,000"
+                         data-gallery="images/chevrolet.png,images/porsche_911.jpg"
+                         onclick="openOverlay('Chevrolet Camaro', '../../garage/images/chevrolet.png', 'Kilometre: 45,000 KM<br>Yıl: 2018<br>Motor Gücü: 6.2L V8<br>Yakıt Türü: Benzin', '$50,000', ['images/chevrolet.png', 'images/porsche_911.jpg'])">
+                        <img src="~/garage/images/chevrolet.png" alt="Car 4">
+                        <h3>Chevrolet Camaro</h3>
+                        <p class="price">Price: $50,000</p>
+                    </div>
+
+                    <div class="car-item"
+                         data-name="Audi R8"
+                         data-image="~/garage/images/audi_r8.jpg"
+                         data-kilometre="25,000 KM"
+                         data-year="2020"
+                         data-motor="5.2L V10"
+                         data-fuel="Benzin"
+                         data-price="$150,000"
+                         data-gallery="images/audi_r8.jpg,images/porsche_911.jpg"
+                         onclick="openOverlay('Audi R8', '../../garage/images/audi_r8.jpg', 'Kilometre: 25,000 KM<br>Yıl: 2020<br>Motor Gücü: 5.2L V10<br>Yakıt Türü: Benzin', '$150,000', ['images/audi_r8.jpg', 'images/porsche_911.jpg'])">
+                        <img src="~/garage/images/audi_r8.jpg" alt="Car 5">
+                        <h3>Audi R8</h3>
+                        <p class="price">Price: $150,000</p>
+                    </div>
+
+                    <div class="car-item"
+                         data-name="Porsche 911"
+                         data-image="~/garage/images/porsche_911.jpg"
+                         data-kilometre="35,000 KM"
+                         data-year="2019"
+                         data-motor="3.0L Boxer 6"
+                         data-fuel="Benzin"
+                         data-price="$120,000"
+                         data-gallery="images/porsche_911.jpg,images/chevrolet.png"
+                         onclick="openOverlay('Porsche 911', '../../garage/images/porsche_911.jpg', 'Kilometre: 35,000 KM<br>Yıl: 2019<br>Motor Gücü: 3.0L Boxer 6<br>Yakıt Türü: Benzin', '$120,000', ['images/porsche_911.jpg', 'images/chevrolet.png'])">
+                        <img src="~/garage/images/porsche_911.jpg" alt="Car 6">
+                        <h3>Porsche 911</h3>
+                        <p class="price">Price: $120,000</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Overlay HTML -->
+    <div id="carOverlay">
+        <div class="overlay-content">
+            <h2 id="overlayTitle"></h2>
+            <div class="carousel">
+                <img id="overlayImage" src="" alt="Car Image">
+                <div class="button-container">
+                    <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+                    <button class="next" onclick="changeImage(1)">&#10095;</button>
+                </div>
+            </div>
+            <p id="overlayDetails"></p>
+            <p id="overlayPrice"></p>
+            <button class="contact-us">Contact Us</button> <!-- Contact Us butonu eklendi -->
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services-section" class="section services-section">
+        <div class="services-background">
+            <div class="service-slider">
+                <div class="service-info" style="background-image: url('../../garage/images/service_bg.jpg');">
+                    <div class="service-content">
+                        <h3 class="service-title">Repair</h3>
+                        <p class="service-description"> Our skilled technicians provide comprehensive repair services to ensure your vehicle runs smoothly. Whether it’s an engine issue, brake repair, or transmission work, we have the expertise to handle it all. Trust us to get your vehicle back on the road in no time!</p>
+                    </div>
+                </div>
+                <div class="service-info" style="background-image: url('../../garage/images/maintenance_bg.jpg');">
+                    <div class="service-content">
+                        <h3 class="service-title">Maintenance</h3>
+                        <p class="service-description">Regular maintenance is key to extending the life of your vehicle. Our maintenance services include oil changes, tire rotations, and comprehensive inspections. We help you keep your car in optimal condition, preventing costly repairs down the line.</p>
+                    </div>
+                </div>
+                <div class="service-info" style="background-image: url('../../garage/images/expert_bg.jpg');">
+                    <div class="service-content">
+                        <h3 class="service-title">Expert</h3>
+                        <p class="service-description">We specialize in custom solutions tailored to meet your unique automotive needs. Our expert team is dedicated to providing high-quality services, ensuring your vehicle is not just functional, but also a reflection of your personal style. Let us help you achieve your dream vehicle!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <h2>Contact Us</h2>
+        @Html.Action("Contact","MainPage")
+        <!-- Footer Alanı -->
+        <footer class="footer">
+            <p>Copyright © 2024 sarsdev. All rights reserved.</p>
+        </footer>
+    </section>
+
+
+    <script src="~/garage/script.js"></script>
+    <script src="~/garage/service.js"></script>
+</body>
+</html>
+

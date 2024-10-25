@@ -1,0 +1,14 @@
+﻿@using GarageWebSite.Models.Classes
+@model List<Contact>
+
+@foreach (var x in Model)
+{
+    <div class="contact-info">
+        <p>Email: @x.email</p>
+        <p>Phone: @x.phoneNumber</p>
+    </div>
+    <div class="contact-address">
+        <p>Address: @x.adress</p>
+    </div>
+}
+

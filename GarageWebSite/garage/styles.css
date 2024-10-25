@@ -1,0 +1,463 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Navbar Styles */
+.navbar {
+    background: linear-gradient(90deg, black, grey); /* Siyah-gri geçiş */
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 20px;
+}
+
+/* Navbar'daki a taglarının stilini değiştirme */
+nav ul li a {
+    font-family: 'Roboto', sans-serif; /* Yazı tipini Roboto yap */
+    font-size: 18px; /* Yazı boyutunu büyüt */
+    font-weight: bold; /* Kalın yazı */
+    color: white; /* Yazı rengini beyaz yap */
+    text-transform: uppercase; /* Büyük harflerle yaz */
+    padding: 10px 15px; /* İç boşluk */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    transition: color 0.3s ease; /* Renk geçiş efekti */
+}
+
+/* Hover durumunda renk değişikliği */
+nav ul li a:hover {
+    color: #FFD700; /* Hover durumunda altın rengine geç */
+}
+
+
+/* Section Styles */
+.section {
+    padding: 80px 20px;
+}
+
+/* Home Section with Background Image */
+.home {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Dikey hizalama için ekledik */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    background: url('../garage/images/garage_bg.png') no-repeat center center/cover;
+    min-height: 100vh;
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Opacity added here */
+    z-index: 1;
+}
+
+.home h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 50px;
+    margin: 0; /* Başlık için varsayılan dış boşluğu kaldır */
+}
+
+.home p {
+    position: relative;
+    z-index: 2;
+    font-size: 20px; /* Açıklama boyutu */
+    margin-top: 10px; /* Başlık ile açıklama arasında boşluk */
+}
+/* Sales Container: Filtre ve Araç Listesi */
+.sales-container {
+    display: flex;
+    gap: 20px; /* Aradaki boşluk */
+    padding: 40px;
+}
+
+
+/* Cars for Sale Section */
+.sales {
+    background-image: url('../garage/images/salesbg.jpg'); /* Arka plan resmi */
+    background-size: cover; /* Resmin tüm alanı kaplaması */
+    background-position: center; /* Resmin ortalanması */
+    background-repeat: no-repeat; /* Resmin tekrar etmemesi */
+    text-align: center;
+    padding: 50px 0;
+    color: white; /* Yazıların daha görünür olması için beyaz */
+    min-height: 80vh;
+}
+
+.sales-container {
+    display: flex;
+    gap: 20px; /* Aradaki boşluk */
+}
+
+/* Filtreleme Alanı */
+.filter-section {
+    background-color: rgba(255, 255, 255, 0.8); /* Hafif şeffaf arka plan */
+    padding: 20px;
+    margin-top: 50px;
+    width: 350px; /* Filtre alanının genişliği */
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #333; /* Metin rengi */
+}
+
+.filter-section h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.filter-section form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.filter-section form select, 
+.filter-section form input[type="range"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filter-section form button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.filter-section form button:hover {
+    background-color: #555;
+}
+
+/* Araç Listesi */
+.car-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    gap: 20px; /* Kartlar arasında boşluk */
+    flex-wrap: wrap; /* Küçük ekranlarda sarma sağlar */
+    flex-grow: 1; /* Esnek alan kullanımı */
+}
+
+.car-item {
+    background-color: rgba(255, 255, 255, 0.9); /* Hafif şeffaf kutular */
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column; /* İçeriği dikey olarak hizalar */
+    align-items: center; /* İçerikleri ortalar */
+    position: relative; /* Overlay konumlandırması için */
+}
+
+.car-item:hover {
+    transform: scale(1.05);
+}
+
+.car-item img {
+    width: 100%;
+    height: 200px; /* Resimlerin sabit yüksekliği */
+    object-fit: cover; /* Görüntünün kutuya sığmasını sağlar, bozulmayı önler */
+    border-radius: 10px;
+}
+
+.car-item h3 {
+    color: black;
+    font-size: 24px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #555;
+}
+
+/* Overlay Styles */
+#carOverlay {
+    display: none; /* Başlangıçta gizli */
+    position: fixed; /* Sabit pozisyon */
+    top: 0; /* Üstten sıfır */
+    left: 0; /* Soldan sıfır */
+    width: 100%; /* Tam genişlik */
+    height: 100%; /* Tam yükseklik */
+    background-color: rgba(0, 0, 0, 0.7); /* Yarı saydam arka plan */
+    justify-content: center; /* Ortalamak için */
+    align-items: center; /* Ortalamak için */
+    z-index: 200; /* Üstte görünmesi için */
+}
+
+/* Overlay içeriği */
+.overlay-content {
+    background-color: white; /* Beyaz arka plan */
+    border-radius: 10px; /* Köşe yuvarlama */
+    padding: 20px; /* İç boşluk */
+    width: 600px; /* Sabit genişlik */
+    height: auto; /* Yükseklik otomatik */
+    max-height: 80%; /* Maksimum yükseklik */
+    overflow: auto; /* Taşmayı engellemek için kaydırma çubuğu ekle */
+    display: flex; /* Flexbox ile yerleşim */
+    flex-direction: column; /* Dikey yerleşim */
+    justify-content: center; /* Ortalamak için */
+    align-items: center; /* Ortalamak için */
+    position: relative; /* İçerik pozisyonu */
+}
+
+/* Overlay içindeki resim */
+.overlay-content img {
+    width: 100%; /* Tam genişlik */
+    height: 200px; /* Sabit yükseklik */
+    object-fit: cover; /* Resmin alanı kaplaması için */
+    border-radius: 10px; /* Köşe yuvarlama */
+}
+
+/* Başlık, fiyat ve detaylar */
+.overlay-content h2,
+.overlay-content p {
+    margin: 10px 0; /* Dış boşluk */
+}
+/* Carousel */
+.carousel {
+    display: flex;
+    align-items: center; /* Dikey ortalama */
+    justify-content: center; /* Yatayda ortalamak için */
+    position: relative; /* Butonları resmin üzerine yerleştirmek için */
+}
+
+.carousel img {
+    width: 300px; /* Sabit genişlik */
+    height: 200px; /* Sabit yükseklik */
+    object-fit: cover; /* Resmin alanı kaplaması için */
+    border-radius: 10px; /* Köşe yuvarlama */
+    transition: transform 0.3s ease; /* Geçiş efekti */
+}
+
+/* Butonların konumu */
+.button-container {
+    display: flex; /* Flexbox ile yan yana yerleştirme */
+    justify-content: space-between; /* Butonlar arasında boşluk */
+    position: absolute; /* Resmin üzerine yerleştirmek için */
+    top: 80px; /* Resmin üst kısmında sabitle */
+    width: 100%; /* Tam genişlik */
+    padding: 0 1%; /* Sağdan ve soldan boşluk */
+}
+
+/* Kaydırma butonları */
+button.prev,
+button.next {
+    background-color: rgba(255, 255, 255, 0.2); /* Yarı saydam beyaz arka plan */
+    color: black; /* Yazı rengi */
+    border: none; /* Kenar yok */
+    padding: 10px; /* İç boşluk */
+    cursor: pointer; /* İmleç değişimi */
+    border-radius: 5px; /* Köşe yuvarlama */
+    font-size: 18px; /* Yazı boyutu */
+    transition: background-color 0.3s ease; /* Hover efekti için geçiş */
+}
+
+button.prev:hover,
+button.next:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Hover durumu için biraz daha belirgin */
+}
+
+
+/* Contact Us Butonu */
+.contact-us {
+    background-color: #28a745; /* Canlı yeşil arka plan */
+    color: white; /* Beyaz yazı rengi */
+    border: none; /* Kenar yok */
+    padding: 15px 30px; /* Yatay ve dikey boşluk */
+    font-size: 18px; /* Yazı boyutu */
+    font-weight: bold; /* Kalın yazı */
+    border-radius: 50px; /* Tam yuvarlak köşeler */
+    cursor: pointer; /* İmleç değişimi */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Hafif gölge */
+    transition: all 0.3s ease; /* Yumuşak geçiş efekti */
+    text-transform: uppercase; /* Büyük harflerle yaz */
+}
+
+/* Hover durumunda stil */
+.contact-us:hover {
+    background-color: #218838; /* Hover için koyu yeşil */
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3); /* Daha büyük gölge */
+    transform: translateY(-5px); /* Butonu yukarı kaldır */
+}
+
+/* Butona tıklanmış (active) durumda stil */
+.contact-us:active {
+    background-color: #1e7e34; /* Daha da koyu yeşil */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Gölgede hafif azalma */
+    transform: translateY(2px); /* Butonu aşağı indir */
+}
+
+
+/* Servis bölümü */
+.services-section {
+    height: 300px; /* Yükseklik ayarı */
+    position: relative; /* İçerik konumlandırması için */
+    overflow: hidden; /* Taşan içeriği gizle */
+    margin: 0; /* Üst ve alt marginleri kaldır */
+    padding: 0; /* Üst ve alt paddingleri kaldır */
+}
+
+/* Servis arka planı */
+.services-background {
+    height: 100%; /* Yüksekliği tamamen kapla */
+    display: flex; /* Flexbox kullanarak içerikleri hizala */
+    justify-content: center; /* Ortalayarak hizala */
+    align-items: center; /* Dikey olarak ortala */
+    width: 300vw;
+}
+
+/* Servis kaydırıcı */
+.service-slider {
+    display: flex; /* Yan yana hizalama */
+    transition: transform 0.5s ease; /* Geçiş efekti */
+    width: 100%; /* Genişliği ekranın tamamını kapla */
+}
+
+/* Servis bilgileri */
+.service-info {
+    background-color: rgba(0, 0, 0, 0.7); /* Şeffaf siyah arka plan */
+    color: white; /* Yazı rengi */
+    padding: 20px; /* İç boşluk */
+    border-radius: 10px; /* Köşe yuvarlama */
+    width: 100vw; /* Ekranın tamamını kapla */
+    height: 300px; /* Yükseklik ayarı */
+    display: flex; /* Flexbox ile içeriği hizala */
+    flex-direction: column; /* Dikey hizalama */
+    justify-content: center; /* Dikey ortalama */
+    align-items: center; /* Yatay ortalama */
+    background-size: cover; /* Arka plan resmini genişlik ve yükseklik uyumlu hale getir */
+    background-position: center; /* Arka plan resmini ortala */
+    background-repeat: no-repeat; /* Arka planın tekrarlanmamasını sağla */
+    position: relative; /* Relative konumlandırma */
+    overflow: hidden; /* Taşmayı gizle */
+}
+
+
+/* Servis içeriği */
+.service-content {
+    background-color: rgba(0, 0, 0, 0.6); /* Beyaz ve şeffaf arka plan */
+    padding: 15px; /* İç boşluk */
+    border-radius: 10px; /* Köşe yuvarlama */
+    text-align: center; /* Yazıyı ortala */
+    width: 50%; /* Genişlik ayarı */
+    height: 200px;
+}
+
+/* Başlık ve açıklama stilleri */
+
+.service-title {
+    font-size: 24px; /* Başlık boyutu */
+    margin-bottom: 10px; /* Başlık ve açıklama arasındaki boşluk */
+}
+
+.service-description {
+    font-size: 16px; /* Açıklama boyutu */
+    line-height: 1.5; /* Satır yüksekliği */
+}
+
+/* Contact Section */
+.contact {
+    height: 400px;
+    background-image: url('../garage/images/contact_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; /* Arka plan resmini kapla */
+    background-position: center;
+    color: white;
+    display: flex; /* Flexbox ile yan yana hizalama */
+    justify-content: space-between; /* Sol ve sağ bölümler arasında boşluk bırak */
+    align-items: center; /* Dikey ortalama */
+    padding: 20px; /* İç boşluk */
+    flex-wrap: wrap; /* Taşmaları önlemek için */
+}
+
+/* Contact bilgileri */
+.contact-info {
+    margin-left: 300px;
+    margin-bottom: 60px;
+    text-align: left; /* Sol hizalama */
+}
+.contact-address {
+    margin-right: 800px;
+    margin-bottom: 50px;
+    text-align: right; /* Sağ hizalama */
+}
+
+/* Başlık ve paragraflar için stil */
+.contact h2 {
+    margin-right: 600px;
+    margin-top: 40px;
+    font-size: 28px;
+    text-align: center; /* Ortala */
+    width: 100%; /* Tüm genişliği kapla */
+}
+
+.contact p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+/* Footer Alanı */
+footer {
+    color: white; /* Yazı rengi beyaz */
+    text-align: center; /* Yazıyı ortala */
+    padding: 20px; /* İç boşluk */
+    font-size: 14px; /* Yazı boyutu */
+    width: 100%; /* Genişliği sayfanın tamamı */
+    position: relative;
+    bottom: 0;
+}
+
+.footer p {
+    margin: 0; /* Varsayılan boşlukları kaldır */
+    font-size: 14px; /* Yazı boyutu */
+    font-family: 'Arial', sans-serif; /* Yazı tipi */
+    opacity: 0.4;
+}
+
+
+
+
