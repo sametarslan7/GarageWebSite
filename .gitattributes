@@ -1,4 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Specify language for C# and ASP.NET files
 *.cs linguist-language=C#
 *.cshtml linguist-language=ASP.NET
+
+# Exclude JavaScript files from language detection
+*.js linguist-vendored
