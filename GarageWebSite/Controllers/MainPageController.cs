@@ -19,7 +19,11 @@ namespace GarageWebSite.Controllers
         {
             var value=c.Contacts.ToList();
             return PartialView(value);
-
+        }
+        public PartialViewResult Service()
+        {
+            var value = c.Services.ToList();
+            return PartialView(value);
         }
     }
 }

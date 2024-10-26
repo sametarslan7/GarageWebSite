@@ -335,7 +335,7 @@ button.next:hover {
 
 /* Servis bölümü */
 .services-section {
-    height: 300px; /* Yükseklik ayarı */
+    height: 500px; /* Yükseklik ayarı */
     position: relative; /* İçerik konumlandırması için */
     overflow: hidden; /* Taşan içeriği gizle */
     margin: 0; /* Üst ve alt marginleri kaldır */
@@ -365,7 +365,7 @@ button.next:hover {
     padding: 20px; /* İç boşluk */
     border-radius: 10px; /* Köşe yuvarlama */
     width: 100vw; /* Ekranın tamamını kapla */
-    height: 300px; /* Yükseklik ayarı */
+    height: 500px; /* Yükseklik ayarı */
     display: flex; /* Flexbox ile içeriği hizala */
     flex-direction: column; /* Dikey hizalama */
     justify-content: center; /* Dikey ortalama */
@@ -384,19 +384,20 @@ button.next:hover {
     padding: 15px; /* İç boşluk */
     border-radius: 10px; /* Köşe yuvarlama */
     text-align: center; /* Yazıyı ortala */
-    width: 50%; /* Genişlik ayarı */
-    height: 200px;
+    width: 40%; /* Genişlik ayarı */
+    height: 300px;
 }
 
 /* Başlık ve açıklama stilleri */
 
 .service-title {
-    font-size: 24px; /* Başlık boyutu */
+    font-size: 28px; /* Başlık boyutu */
     margin-bottom: 10px; /* Başlık ve açıklama arasındaki boşluk */
 }
 
 .service-description {
-    font-size: 16px; /* Açıklama boyutu */
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px; /* Açıklama boyutu */
     line-height: 1.5; /* Satır yüksekliği */
 }
 

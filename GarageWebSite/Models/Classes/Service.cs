@@ -12,5 +12,6 @@ namespace GarageWebSite.Models.Classes
         public int Id { get; set; }
         public string serviceName { get; set; }
         public string serviceDescription { get; set; }
+        public string servicePhotoUrl { get; set; }
     }
 }

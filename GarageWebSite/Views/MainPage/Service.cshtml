@@ -1,0 +1,19 @@
+﻿@using GarageWebSite.Models.Classes
+@model List<Service>
+
+
+
+<div class="services-background">
+    <div class="service-slider">
+        @foreach (var x in Model)
+        {
+            <div class="service-info" style="background-image: url('@x.servicePhotoUrl');">
+                <div class="service-content">
+                    <h3 class="service-title">@x.serviceName</h3>
+                    <p class="service-description">@x.serviceDescription</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
