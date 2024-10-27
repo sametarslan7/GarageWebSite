@@ -16,7 +16,7 @@ namespace GarageWebSite.Models.Classes
         public int BrandId { get; set; } // Foreign Key to Brands
         public int Km { get; set; }
         public int Year { get; set; }
-        public int Power { get; set; }
+        public double Power { get; set; }
         public int FuelId { get; set; } // Foreign Key to FuelTypes
         public int PhotoId { get; set; } // Foreign Key to Photos (One main photo)
         public string OwnerPhone { get; set; }
