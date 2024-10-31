@@ -56,6 +56,27 @@ namespace GarageWebSite.Controllers
             return View(value);
         }
 
+        //PHOTO
+        public ActionResult PhotoList()
+        {
+            // Cars tablosuna Photos  dahil edilerek gerekli verileri tek seferde getiriyoruz.
+            var carsQuery = c.Cars
+                .Include(c => c.Photos)
+                .AsQueryable(); // AsQueryable ile sorgu oluşturuyoruz.
+
+            // Sorguyu çalıştırıyoruz
+            var cars = carsQuery.ToList();
+
+            // ViewModel oluşturma
+            var carViewModels = cars.Select(car => new CarViewModel
+            {
+                Car = car,
+                Photos = car.Photos.ToList(), // Araca ait tüm fotoğrafları alıyoruz
+            }).ToList();
+
+            return View(carViewModels);
+        }
+
         //FUELTYPE
         public ActionResult FuelTypeList()
         {
