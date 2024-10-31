@@ -1,0 +1,59 @@
+/* Genel Ayarlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f9;
+    height: 100%;
+}
+
+/* Admin Panel Yapısı */
+.admin-panel {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sol Menü */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    line-height: 1.8; /* Satır yüksekliğini artırarak kalın bir görünüm sağlıyor */
+}
+
+/* Sol Menü Hover Ayarı */
+.sidebar ul li a:hover {
+    background-color: #555;
+    border-radius: 5px; /* Kenarları yuvarlayarak daha belirgin hale getirebiliriz */
+}
+

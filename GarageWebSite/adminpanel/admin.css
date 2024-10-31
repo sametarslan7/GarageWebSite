@@ -1,0 +1,53 @@
+
+/* İçerik Alanı */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+.content header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 50px;
+}
+
+.content header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.content main {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-responsive {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+/* Tabloda satır yüksekliği, yazı boyutu ve dolgu düzenlemeleri */
+        .table td, .table th {
+            font-size: 1.1rem; /* Yazı boyutu */
+            padding: 1rem;     /* Hücre dolgusu */
+            vertical-align: middle; /* İçeriğin ortalanması */
+        }
+        .table thead th {
+            font-weight: bold;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        .addnewbutton{
+            margin-top: 20px;
+        }
+        .addnewbutton .btn {
+            font-size: 0.75rem; /* Font boyutunu artırır */
+            padding: 10px 20px; /* Butonun iç boşluklarını artırır */
+        }
+
+    

@@ -10,6 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garage Website</title>
     <link rel="stylesheet" href="~/garage/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 </head>
 <body>
     <!-- Navbar -->
@@ -36,14 +40,14 @@
             <!-- Filtreleme Alanı -->
             <aside class="filter-section">
                 <h3>Filter Cars</h3>
-                <form>
+                <form id="filterForm" onsubmit="return false;">
                     <!-- Marka Filtreleme -->
                     <label for="brand">Brand</label>
                     <select id="brand" name="brand">
                         <option value="all">All</option>
-                        <option value="ford">Ford</option>
-                        <option value="tesla">Tesla</option>
-                        <option value="bmw">BMW</option>
+                        <option value="TOYOTA">TOYOTA</option>
+                        <option value="AUDI">AUDI</option>
+                        <option value="BMW">BMW</option>
                     </select>
 
                     <!-- Yıl Filtreleme -->
@@ -69,17 +73,17 @@
                     <input type="range" id="price" name="price" min="10000" max="100000" step="1000" onchange="updatePrice(this.value)">
                     <span id="price-output">$10000 - $100000</span>
 
-                    <button type="submit" onclick="applyFilters()">Apply Filters</button>
+                    <button type="button" onclick="applyFilters()">Apply Filters</button>
                 </form>
             </aside>
 
             <!-- Araç Listesi -->
-            <div class="car-list">
-                <div class="car-list">
-                    @Html.Action("Car", "MainPage")
-                </div>
+            <div class="car-list" id="carList">
+                @Html.Action("Car", "MainPage")
             </div>
+        </div>
     </section>
+
 
 
     <!-- Overlay HTML -->
@@ -118,6 +122,7 @@
 
     <script src="~/garage/script.js"></script>
     <script src="~/garage/service.js"></script>
+    <script src="~/garage/filter.js"></script>
 </body>
 </html>
 

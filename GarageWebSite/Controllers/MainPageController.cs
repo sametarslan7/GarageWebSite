@@ -27,20 +27,30 @@ namespace GarageWebSite.Controllers
             var value = c.Services.ToList();
             return PartialView(value);
         }
-        public PartialViewResult Car()
+        public PartialViewResult Car(string brand, string year, string fuel)
         {
-            // Cars tablosuna FuelType ve Photos dahil edilerek tüm gerekli verileri tek seferde getiriyoruz.
-            var cars = c.Cars.Include(c => c.FuelType).Include(c => c.Photos).Include(c => c.Brand).ToList();
+            // Cars tablosuna FuelType, Photos ve Brand dahil edilerek gerekli verileri tek seferde getiriyoruz.
+            var carsQuery = c.Cars
+                .Include(c => c.FuelType)
+                .Include(c => c.Photos)
+                .Include(c => c.Brand)
+                .AsQueryable(); // AsQueryable ile sorgu oluşturuyoruz.
 
+            // Sorguyu çalıştırıyoruz
+            var cars = carsQuery.ToList();
+
+            // ViewModel oluşturma
             var carViewModels = cars.Select(car => new CarViewModel
             {
                 Car = car,
                 FuelTypeName = car.FuelType.FuelName, // Yakıt türünü doğrudan alıyoruz
-                Photos = car.Photos.ToList() ,// Araca ait tüm fotoğrafları alıyoruz
-                BrandName = car.Brand.BrandName // Araca ait tüm fotoğrafları alıyoruz
+                Photos = car.Photos.ToList(), // Araca ait tüm fotoğrafları alıyoruz
+                BrandName = car.Brand.BrandName // Araca ait markayı alıyoruz
             }).ToList();
 
             return PartialView(carViewModels);
         }
+
+
     }
 }
