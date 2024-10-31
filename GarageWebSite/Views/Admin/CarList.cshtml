@@ -1,0 +1,66 @@
+﻿@using GarageWebSite.Models.Classes
+@model List<CarViewModel>
+@{
+    ViewBag.Title = "CarList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<main>
+    <!-- Cars -->
+    <header>
+        <h1><i class="fas fa-car"></i> Cars</h1>
+    </header>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">KM</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Power</th>
+                    <th scope="col">Fuel Type</th>
+                    @*<th scope="col">Photos</th>*@
+                    <th scope="col">Owner Phone</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Data Entries -->
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.Car.Id</td>
+                        <td>@x.Car.Name</td>
+                        <td>@x.BrandName</td>
+                        <td>@x.Car.Km</td>
+                        <td>@x.Car.Year</td>
+                        <td>@x.Car.Power</td>
+                        <td>@x.FuelTypeName</td>
+                        @*<td><img src="example.jpg" alt="Car Photo" width="50"></td>*@
+                        <td>@x.Car.OwnerPhone</td>
+                        <td>@x.Car.Price</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit"></i> Update
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- Add New Car  -->
+    <div class="addnewbutton">
+        <a class="btn btn-info" href="new/newcar.html">
+            Add New Car
+        </a>
+    </div>
+</main>
+
