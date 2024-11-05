@@ -38,6 +38,14 @@ namespace GarageWebSite.Controllers
             return RedirectToAction("AdminList");
         }
 
+        public ActionResult DeleteAdmin(int id)
+        {
+            var dlt = c.Admins.Find(id);
+            c.Admins.Remove(dlt);
+            c.SaveChanges();
+            return RedirectToAction("AdminList");
+        }
+
         //CARS
         public ActionResult CarList(string brand, string year, string fuel)
         {
@@ -128,7 +136,39 @@ namespace GarageWebSite.Controllers
 
             return RedirectToAction("CarList");
         }
+        public ActionResult DeleteCar(int id)
+        {
+            // Önce arabayı buluyoruz
+            var dlt_car = c.Cars.Find(id);
 
+            if (dlt_car != null)
+            {
+                // Bu arabaya ait tüm fotoğrafları buluyoruz
+                var photos = c.Photos.Where(p => p.CarId == id).ToList();
+
+                // Her bir fotoğrafı tek tek kaldırıyoruz
+                foreach (var photo in photos)
+                {
+                    // Öncelikle sunucudan dosyayı siliyoruz (eğer gerekli ise)
+                    var filePath = Server.MapPath(photo.PhotoUrl);
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath); // Fotoğraf dosyasını sil
+                    }
+
+                    // Fotoğrafı veritabanından siliyoruz
+                    c.Photos.Remove(photo);
+                }
+
+                // Arabayı veritabanından siliyoruz
+                c.Cars.Remove(dlt_car);
+
+                // Tüm değişiklikleri kaydediyoruz
+                c.SaveChanges();
+            }
+
+            return RedirectToAction("CarList");
+        }
 
 
 
@@ -148,6 +188,14 @@ namespace GarageWebSite.Controllers
         public ActionResult NewBrand(Brand b)
         {
             c.Brands.Add(b);
+            c.SaveChanges();
+            return RedirectToAction("BrandList");
+        }
+
+        public ActionResult DeleteBrand(int id)
+        {
+            var dlt = c.Brands.Find(id);
+            c.Brands.Remove(dlt);
             c.SaveChanges();
             return RedirectToAction("BrandList");
         }
@@ -193,6 +241,14 @@ namespace GarageWebSite.Controllers
             return RedirectToAction("FuelTypeList");
         }
 
+        public ActionResult DeleteFuelType(int id)
+        {
+            var dlt=c.FuelTypes.Find(id);
+            c.FuelTypes.Remove(dlt);
+            c.SaveChanges();
+            return RedirectToAction("FuelTypeList");
+        }
+
         //SERVICE
         public ActionResult ServiceList()
         {
@@ -212,7 +268,13 @@ namespace GarageWebSite.Controllers
             c.SaveChanges();
             return RedirectToAction("ServiceList");
         }
-
+        public ActionResult DeleteService(int id)
+        {
+            var dlt = c.Services.Find(id);
+            c.Services.Remove(dlt);
+            c.SaveChanges();
+            return RedirectToAction("ServiceList");
+        }
         //CONTACT
         public ActionResult ContactList()
         {
