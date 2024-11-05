@@ -1,0 +1,22 @@
+﻿@model GarageWebSite.Models.Classes.FuelType
+@{
+    ViewBag.Title = "NewFuelType";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<main>
+    <header>
+        <h1><i class="fas fa-gas-pump"></i> New Fuel Type</h1>
+    </header>
+
+    <div class="container">
+        <form method="post">
+            <div class="form-group">
+                <label for="fuelName">Fuel Name</label>
+                @Html.TextBoxFor(x => x.FuelName ,new  { @class="form-control", @id="fuelName" , @placeholder="Enter Fuelname"})
+                @*<input type="text" class="form-control" id="fuelName" placeholder="Enter fuelname" required>*@
+            </div>
+            <button type="submit" class="btn btn-primary">Add Fuel Type</button>
+        </form>
+    </div>
+</main>

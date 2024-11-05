@@ -133,6 +133,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202411010933172_UpdatePhotoRelation.cs" />
+    <Compile Include="Migrations\202411010933172_UpdatePhotoRelation.designer.cs">
+      <DependentUpon>202411010933172_UpdatePhotoRelation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Classes\Admin.cs" />
     <Compile Include="Models\Classes\Brand.cs" />
@@ -229,9 +233,16 @@
     <Content Include="Views\Admin\AdminList.cshtml" />
     <Content Include="Views\Admin\CarList.cshtml" />
     <Content Include="Views\Admin\PhotoList.cshtml" />
+    <Content Include="Views\Admin\NewBrand.cshtml" />
+    <Content Include="Views\Admin\NewFuelType.cshtml" />
+    <Content Include="Views\Admin\NewServiceList.cshtml" />
+    <Content Include="Views\Admin\NewAdmin.cshtml" />
+    <Content Include="Views\Admin\NewCar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\cars\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -259,6 +270,11 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202411010933172_UpdatePhotoRelation.resx">
+      <DependentUpon>202411010933172_UpdatePhotoRelation.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,24 +5,37 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.IO;
 
 
 namespace GarageWebSite.Controllers
 {
     public class AdminController : Controller
     {
-        Context c= new Context();
+        Context c = new Context();
         // GET: Admin
         public ActionResult Index()
         {
             return View();
         }
-        
+
         // ADMIN
         public ActionResult AdminList()
         {
             var value = c.Admins.ToList();
             return View(value);
+        }
+        [HttpGet]
+        public ActionResult NewAdmin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NewAdmin(Admin a)
+        {
+            c.Admins.Add(a);
+            c.SaveChanges();
+            return RedirectToAction("AdminList");
         }
 
         //CARS
@@ -48,12 +61,95 @@ namespace GarageWebSite.Controllers
             }).ToList();
             return View(carViewModels);
         }
+        [HttpGet]
+        public ActionResult NewCar()
+        {
+            ViewBag.Brands = c.Brands.ToList(); // Marka listesini ViewBag ile gönder
+            ViewBag.FuelTypes = c.FuelTypes.ToList(); // Yakıt tipi listesini ViewBag ile gönder
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult NewCar(Car cr, IEnumerable<HttpPostedFileBase> Files)
+        {
+            using (var transaction = c.Database.BeginTransaction())
+            {
+                try
+                {
+                    // 1. Yeni araba ekleniyor
+                    c.Cars.Add(cr);
+                    c.SaveChanges(); // Car kaydını kaydediyoruz ve ID'yi alıyoruz
+
+                    // Yeni eklenen arabanın ID'sini al
+                    var carId = cr.Id;
+
+                    // 2. Fotoğrafları kaydetme işlemi (Sadece URL'leri alıp veritabanına kaydediyoruz)
+                    if (Files != null && Files.Any())
+                    {
+                        foreach (var file in Files)
+                        {
+                            if (file != null && file.ContentLength > 0)
+                            {
+                                // Dosya adını al
+                                var fileName = Path.GetFileName(file.FileName);
+                                var filePath = Path.Combine(Server.MapPath("~/images/cars"), fileName);
+
+                                // Fotoğrafı sunucuya kaydet
+                                file.SaveAs(filePath);
+
+                                // Fotoğrafı Photos tablosuna ekle
+                                var photo = new Photo
+                                {
+                                    CarId = carId,       // Car ile ilişkilendiriliyor
+                                    PhotoUrl = "/images/cars/" + fileName  // Tam URL'yi PhotoUrl olarak kaydediyoruz
+                                };
+
+                                // Fotoğrafı Photos tablosuna ekle
+                                c.Photos.Add(photo);
+                            }
+                        }
+
+                        // Tüm fotoğraf kayıtlarını kaydet
+                        c.SaveChanges();
+                    }
+
+                    // Her şey başarılıysa işlemi onayla
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    // Hata durumunda işlemi geri al
+                    transaction.Rollback();
+                    // Hata mesajı gösterme veya log kaydı yapabilirsiniz
+                    ModelState.AddModelError("", "Bir hata oluştu. Lütfen tekrar deneyin. Hata: " + ex.Message);
+                    return View(cr);
+                }
+            }
+
+            return RedirectToAction("CarList");
+        }
+
+
+
 
         //BRAND
         public ActionResult BrandList()
         {
             var value = c.Brands.ToList();
             return View(value);
+        }
+
+        [HttpGet]
+        public ActionResult NewBrand()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NewBrand(Brand b)
+        {
+            c.Brands.Add(b);
+            c.SaveChanges();
+            return RedirectToAction("BrandList");
         }
 
         //PHOTO
@@ -84,11 +180,37 @@ namespace GarageWebSite.Controllers
             return View(value);
         }
 
+        [HttpGet]
+        public ActionResult NewFuelType()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NewFuelType(FuelType f)
+        {
+            c.FuelTypes.Add(f);
+            c.SaveChanges();
+            return RedirectToAction("FuelTypeList");
+        }
+
         //SERVICE
         public ActionResult ServiceList()
         {
             var value = c.Services.ToList();
             return View(value);
+        }
+
+        [HttpGet]
+        public ActionResult NewServiceList()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NewServiceList(Service s)
+        {
+            c.Services.Add(s);
+            c.SaveChanges();
+            return RedirectToAction("ServiceList");
         }
 
         //CONTACT

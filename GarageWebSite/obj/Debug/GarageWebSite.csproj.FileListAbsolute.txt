@@ -58,3 +58,5 @@ C:\Users\user\Desktop\GarageWebSite\GarageWebSite\bin\Microsoft.CodeDom.Provider
 C:\Users\user\Desktop\GarageWebSite\GarageWebSite\obj\Debug\GarageWebSite.csproj.CopyComplete
 C:\Users\user\Desktop\GarageWebSite\GarageWebSite\obj\Debug\GarageWebSite.dll
 C:\Users\user\Desktop\GarageWebSite\GarageWebSite\obj\Debug\GarageWebSite.pdb
+C:\Users\user\Desktop\GarageWebSite\GarageWebSite\obj\Debug\GarageWebSite.Migrations.UpdatePhotoRelation.resources
+C:\Users\user\Desktop\GarageWebSite\GarageWebSite\obj\Debug\GarageWebSite.csproj.GenerateResource.cache

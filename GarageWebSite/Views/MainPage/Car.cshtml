@@ -4,19 +4,18 @@
 
 @foreach (var x in Model)
 {
-    var photos = string.Join(",", x.Photos.Select(photo => $"'{photo.PhotoUrl}'")); // Tüm fotoğraf URL'lerini virgülle birleştir
+    var photos = string.Join(",", x.Photos.Select(photo => $"'{photo.PhotoUrl}'"));
 
     <div class="car-item"
          data-name="@x.Car.Name"
-         data-image="@x.Photos.First().PhotoUrl" // İlk fotoğrafı ana resim olarak al
+         data-image="@(x.Photos.FirstOrDefault() != null ? x.Photos.First().PhotoUrl : "default-image-url.jpg")"
          data-kilometre="@x.Car.Km KM"
          data-year="@x.Car.Year"
-         data-motor="@x.Car.Power" // Motor gücünü doğrudan ekleyebilirsiniz
          data-fuel="@x.FuelTypeName"
          data-price="$@x.Car.Price"
-         data-gallery="@photos" // Tüm fotoğrafları buraya ekle
-         onclick="openOverlay('@x.Car.Name', '@x.Photos.First().PhotoUrl', 'Brand: @x.BrandName <br>KM: @x.Car.Km KM <br>Model Year: @x.Car.Year<br>Motor Volume: @x.Car.Power<br>Fuel Type: @x.FuelTypeName', '$@x.Car.Price', [@photos])">
-        <img src="@x.Photos.First().PhotoUrl" alt="@x.Car.Name">
+         data-gallery="@String.Join(",", x.Photos.Select(p => p.PhotoUrl))"
+         onclick="openOverlay('@x.Car.Name', '@(x.Photos.FirstOrDefault()?.PhotoUrl ?? "default-image-url.jpg")', 'Brand: @x.BrandName <br>KM: @x.Car.Km KM <br>Model Year: @x.Car.Year<br>Motor Volume: @x.Car.Power<br>Fuel Type: @x.FuelTypeName', '$@x.Car.Price', [@String.Join(",", x.Photos.Select(p => "'" + p.PhotoUrl + "'"))])">
+        <img src="@(x.Photos.FirstOrDefault()?.PhotoUrl ?? "default-image-url.jpg")" alt="@x.Car.Name">
         <h3>@x.Car.Name</h3>
         <p class="price">Price: $@x.Car.Price</p>
     </div>

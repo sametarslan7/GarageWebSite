@@ -1,0 +1,75 @@
+﻿@model GarageWebSite.Models.Classes.Car
+@{
+    ViewBag.Title = "NewCar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<main>
+    <header>
+        <h1><i class="fas fa-car"></i> New Car</h1>
+    </header>
+
+    <div class="container">
+        <form action="/Admin/NewCar" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Name">Name</label>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Enter car name" })
+            </div>
+
+            <div class="form-group">
+                <label for="Brand">Brand</label>
+                <select id="Brand" name="BrandId" class="form-control" required>
+                    <option value="">Select a brand</option>
+                    @foreach (var brand in ViewBag.Brands)
+                    {
+                        <option value="@brand.BrandId">@brand.BrandName</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Km">KM</label>
+                @Html.TextBoxFor(x => x.Km, new { @class = "form-control", @placeholder = "Enter kilometers" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Year">Year</label>
+                @Html.TextBoxFor(x => x.Year, new { @class = "form-control", @placeholder = "Enter manufacturing year" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Power">Power (HP)</label>
+                @Html.TextBoxFor(x => x.Power, new { @class = "form-control", @placeholder = "Enter power" })
+            </div>
+
+            <div class="form-group">
+                <label for="FuelType">Fuel Type</label>
+                <select id="FuelType" name="FuelId" class="form-control" required>
+                    <option value="">Select a fuel type</option>
+                    @foreach (var fuelType in ViewBag.FuelTypes)
+                    {
+                        <option value="@fuelType.FuelId">@fuelType.FuelName</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="carPhotos">Upload Photos</label>
+                <input type="file" name="Files" multiple />
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="OwnerPhone">Owner Phone</label>
+                @Html.TextBoxFor(x => x.OwnerPhone, new { @class = "form-control", @placeholder = "Enter owner's phone number" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price">Price</label>
+                @Html.TextBoxFor(x => x.Price, new { @class = "form-control", @placeholder = "Enter price" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Car</button>
+        </form>
+    </div>
+</main>
