@@ -1,0 +1,54 @@
+﻿@model GarageWebSite.Models.Classes.Admin
+@{
+    ViewBag.Title = "GetAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("UpdateAdmin", "Admin", FormMethod.Post))
+{
+    <main>
+        <header>
+            <h1><i class="fas fa-user-plus"></i> Updating the  Admin </h1>
+        </header>
+
+        <div class="container">
+            <form method="post">
+                <div class="form-group">
+                    <label for="Id">ID</label>
+                    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @id = "Id", @readonly = "readonly" })
+                    @*<input type="text" class="form-control" id="adminName" placeholder="Enter name" required>*@
+                </div>
+                <div class="form-group">
+                    <label for="adminName">Name</label>
+                    @Html.TextBoxFor(x => x.name, new { @class = "form-control", @id = "adminName", @placeholder = "Enter name" })
+                    @*<input type="text" class="form-control" id="adminName" placeholder="Enter name" required>*@
+                </div>
+                <div class="form-group">
+                    <label for="adminSurname">Surname</label>
+                    @Html.TextBoxFor(x => x.surname, new { @class = "form-control", @id = "adminSurname", @placeholder = "Enter surname" })
+                    @*<input type="text" class="form-control" id="adminSurname" placeholder="Enter surname" required>*@
+                </div>
+                <div class="form-group">
+                    <label for="adminNickname">Username</label>
+                    @Html.TextBoxFor(x => x.nickname, new { @class = "form-control", @id = "adminName", @placeholder = "Enter name" })
+                    @*<input type="text" class="form-control" id="adminNickname" placeholder="Enter username" required>*@
+                </div>
+                <div class="form-group">
+                    <label for="adminEmail">Mail</label>
+                    @Html.TextBoxFor(x => x.email, new { @class = "form-control", @id = "adminEmail", @placeholder = "Enter e-mail adress", @type = "email" })
+                    @*<input type="email" class="form-control" id="adminEmail" placeholder="Enter e-mail address" required>*@
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    @Html.TextBoxFor(x => x.password, new { @class = "form-control", @id = "adminPassword", @placeholder = "Enter password", @type = "password" })
+                    @*<input type="password" class="form-control" id="adminPassword" placeholder="Enter password" required>*@
+                </div>
+                <button type="submit" class="btn btn-primary">Update Admin</button>
+            </form>
+        </div>
+    </main>
+
+
+}
+

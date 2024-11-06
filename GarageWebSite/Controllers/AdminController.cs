@@ -46,6 +46,26 @@ namespace GarageWebSite.Controllers
             return RedirectToAction("AdminList");
         }
 
+        public ActionResult GetAdmin(int id)
+        {
+            var admin=c.Admins.Find(id);
+            return View("GetAdmin",admin);
+        }
+
+        public ActionResult UpdateAdmin(Admin ad)
+        {
+            var upt = c.Admins.Find(ad.Id);
+
+            upt.name = ad.name;
+            upt.surname = ad.surname;
+            upt.email = ad.email;
+            upt.nickname = ad.nickname;
+            upt.password= ad.password;
+            c.SaveChanges();
+            return RedirectToAction("AdminList");
+        }
+
+
         //CARS
         public ActionResult CarList(string brand, string year, string fuel)
         {
@@ -170,7 +190,39 @@ namespace GarageWebSite.Controllers
             return RedirectToAction("CarList");
         }
 
+        public ActionResult GetCar(int id)
+        {
+            ViewBag.Brands = c.Brands.ToList(); // Marka listesini ViewBag ile gönder
+            ViewBag.FuelTypes = c.FuelTypes.ToList(); // Yakıt tipi listesini ViewBag ile gönder
 
+            var car = c.Cars.Find(id);
+
+            if (car != null)
+            {
+                ViewBag.SelectedBrand = car.Brand.BrandId; // Mevcut BrandId'yi gönder
+                ViewBag.SelectedFuelType = car.FuelType.FuelId; // Mevcut FuelTypeId'yi gönder
+            }
+
+            return View("GetCar", car);
+        }
+
+        public ActionResult UpdateCar(Car cr)
+        {
+            var upt = c.Cars.Find(cr.Id);
+            upt.Name = cr.Name;
+            upt.Name = cr.Name;
+            upt.Km = cr.Km;
+            upt.Year = cr.Year;
+            upt.OwnerPhone = cr.OwnerPhone;
+            upt.Price = cr.Price;
+            upt.Brand = cr.Brand;
+            upt.FuelType = cr.FuelType;
+            upt.Power = cr.Power;
+            c.SaveChanges();
+
+
+            return RedirectToAction("CarList");
+        }
 
         //BRAND
         public ActionResult BrandList()
@@ -200,6 +252,18 @@ namespace GarageWebSite.Controllers
             return RedirectToAction("BrandList");
         }
 
+        public ActionResult GetBrand(int id)
+        {
+            var brand = c.Brands.Find(id);
+            return View("GetBrand",brand);
+        }
+        public ActionResult UpdateBrand(Brand br)
+        {
+            var upt = c.Brands.Find(br.BrandId);
+            upt.BrandName = br.BrandName;
+            c.SaveChanges();
+            return RedirectToAction("BrandList");
+        }
         //PHOTO
         public ActionResult PhotoList()
         {
@@ -221,6 +285,22 @@ namespace GarageWebSite.Controllers
             return View(carViewModels);
         }
 
+        public ActionResult GetPhoto(int id)
+        {
+            // Belirtilen aracın fotoğraflarını sorgula
+            var photos = c.Photos.Where(p => p.CarId == id).ToList();
+
+            // Fotoğrafları View'e gönder
+            return View("GetPhoto",photos);
+        }
+
+        public ActionResult DeletePhoto(int id)
+        {
+            var dlt = c.Photos.Find(id);
+            c.Photos.Remove(dlt);
+            c.SaveChanges();
+            return RedirectToAction("PhotoList");
+        }
         //FUELTYPE
         public ActionResult FuelTypeList()
         {
@@ -245,6 +325,19 @@ namespace GarageWebSite.Controllers
         {
             var dlt=c.FuelTypes.Find(id);
             c.FuelTypes.Remove(dlt);
+            c.SaveChanges();
+            return RedirectToAction("FuelTypeList");
+        }
+
+        public ActionResult GetFuelType(int id)
+        {
+            var fuel=c.FuelTypes.Find(id);
+            return View("GetFuelType",fuel);
+        }
+        public ActionResult UpdateFuelType(FuelType ft)
+        {
+            var upt = c.FuelTypes.Find(ft.FuelId);
+            upt.FuelName = ft.FuelName;
             c.SaveChanges();
             return RedirectToAction("FuelTypeList");
         }
@@ -275,11 +368,39 @@ namespace GarageWebSite.Controllers
             c.SaveChanges();
             return RedirectToAction("ServiceList");
         }
+        public ActionResult GetService(int id)
+        {
+            var service=c.Services.Find(id);
+            return View("GetService", service);
+        }
+        public ActionResult UpdateService(Service sr)
+        {
+            var upt = c.Services.Find(sr.Id);
+            upt.serviceName = sr.serviceName;
+            upt.serviceDescription=sr.serviceDescription;
+            upt.servicePhotoUrl= sr.servicePhotoUrl;
+            c.SaveChanges();
+            return RedirectToAction("ServiceList");
+        }
         //CONTACT
         public ActionResult ContactList()
         {
             var value = c.Contacts.ToList();
             return View(value);
+        }
+        public ActionResult GetContact(int id)
+        {
+            var contact=c.Contacts.Find(id);
+            return View("GetContact", contact);
+        }
+        public ActionResult UpdateContact(Contact ct)
+        {
+            var upt=c.Contacts.Find(ct.Id);
+            upt.email= ct.email;
+            upt.adress= ct.adress;
+            upt.phoneNumber= ct.phoneNumber;
+            c.SaveChanges();
+            return RedirectToAction("ContactList");
         }
     }
 }

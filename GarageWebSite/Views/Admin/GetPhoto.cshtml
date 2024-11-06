@@ -1,0 +1,36 @@
+﻿@model List<GarageWebSite.Models.Classes.Photo>
+
+@{
+    ViewBag.Title = "GetPhoto";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<main>
+    <header>
+        <h1><i class="fas fa-images"></i> Car Photos</h1>
+    </header>
+
+    <div class="container">
+        @if (Model.Any())
+        {
+            <div class="row">
+                @foreach (var photo in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <img src="@photo.PhotoUrl" class="card-img-top" alt="Car Photo" style="width:350px;height:250px;">
+                            <a href="~/Admin/DeletePhoto/@photo.PhotoId" class="btn btn-danger btn-sm" style="position:absolute; top:100px; right:135px; opacity:0.7;">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>No photos available for this car.</p>
+        }
+    </div>
+</main>
+

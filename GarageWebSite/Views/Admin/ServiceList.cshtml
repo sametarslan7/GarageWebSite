@@ -31,10 +31,10 @@
                         <td>@x.serviceDescription</td>
                         <td>@x.servicePhotoUrl</td>
                         <td>
-                            <button class="btn btn-warning btn-sm" style="margin-bottom:10px;width:100px;">
+                            <a style="margin-bottom:10px;width:100px" href="/Admin/GetService/@x.Id" class="btn btn-warning btn-sm">
                                 <i class="fas fa-edit"></i> Update
-                            </button>
-                            <a href="/Admin/DeleteService/@x.Id" class="btn btn-danger btn-sm">
+                            </a>
+                            <a style="width:100px;" href="/Admin/DeleteService/@x.Id" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i> Delete
                             </a>
                         </td>
