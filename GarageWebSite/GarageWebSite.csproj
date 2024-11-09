@@ -184,6 +184,7 @@
     <Content Include="garage\images\sales_bg.png" />
     <Content Include="garage\images\service_bg.jpg" />
     <Content Include="garage\index.html" />
+    <Content Include="garage\newservice.js" />
     <Content Include="garage\script.js" />
     <Content Include="garage\service.js" />
     <Content Include="garage\styles.css" />
