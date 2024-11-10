@@ -416,12 +416,12 @@ button.next:hover {
 
 /* Contact bilgileri */
 .contact-info {
-    margin-left: 300px;
+    margin-left: 500px;
     margin-bottom: 60px;
     text-align: left; /* Sol hizalama */
 }
 .contact-address {
-    margin-right: 800px;
+    margin-right: 1000px;
     margin-bottom: 50px;
     text-align: right; /* Sağ hizalama */
 }

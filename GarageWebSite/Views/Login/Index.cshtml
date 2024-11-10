@@ -1,0 +1,55 @@
+﻿@model GarageWebSite.Models.Classes.Admin
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Sign Up</title>
+    <link rel="stylesheet" href="~/garage/Login/sign.css">
+</head>
+<body>
+    <br>
+    <br>
+    <div class="cont">
+        <div class="sub-cont">
+            <!-- Left: Sign In -->
+            <div class="left">
+                <div class="left__text">
+                    <h3>If you already have an account, just sign in.</h3>
+                </div>
+                <div class="left__btn">
+                    <button class="submit" style="width:200px;" onclick="window.location.href='/Login/Signup'">Sign Up</button>
+                </div>
+            </div>
+
+            <!-- Right: Sign Up -->
+            <div class="right">
+                <div class="form sign-up">
+                    <!-- Hata Mesajı Gösterme -->
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <p style="color:red;">@ViewBag.ErrorMessage</p>
+                    }
+                    <form method="post">
+                        <h2>Create your Account</h2>
+                        <label>
+                            <span>Username</span>
+                            @Html.TextBoxFor(x => x.nickname, new { @class = "form-control", @id = "nickname" })
+                        </label>
+                        <label>
+                            <span>Password</span>
+                            @Html.TextBoxFor(x => x.password, new { @class = "form-control", @id = "password", @type = "password" })
+                        </label>
+                        <button type="submit" class="submit">Sign In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

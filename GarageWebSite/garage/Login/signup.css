@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    background-image: url("salesbg.jpg");
+    background-repeat: no-repeat; /* Tekrarlamayı durdurur */
+    background-size: cover; /* Ekranı tam kaplar */
+    background-position: center; /* Resmi ortalar */
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.cont {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-cont {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.img {
+    width: 30%;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.img__text {
+    text-align: center;
+    padding: 15px;
+    color: #333;
+}
+
+.img__text.m--in {
+    display: block;
+}
+
+.img__btn {
+    margin-top: 20px;
+}
+
+.img__btn span {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #555;
+    border-radius: 5px;
+    background-color: #ddd;
+}
+
+.img__btn .m--up:hover, .img__btn .m--in:hover {
+    background-color: #bbb;
+}
+
+.form {
+    width: 50%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form h2 {
+    margin: 0 0 20px;
+    color: #333;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+label span {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.submit {
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #5cb85c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #4cae4c;
+}

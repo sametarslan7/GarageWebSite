@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.IO;
-
+using System.Web.Security;
 
 namespace GarageWebSite.Controllers
 {
@@ -14,6 +14,7 @@ namespace GarageWebSite.Controllers
     {
         Context c = new Context();
         // GET: Admin
+        [Authorize]
         public ActionResult Index()
         {
             return View();

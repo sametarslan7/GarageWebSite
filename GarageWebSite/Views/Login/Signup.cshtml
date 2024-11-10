@@ -1,0 +1,65 @@
+﻿@model GarageWebSite.Models.Classes.Admin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="~/garage/Login/signup.css">
+</head>
+<body>
+    <br>
+    <br>
+    <div class="cont">
+        <div class="sub-cont">
+            <div class="img">
+
+                <div class="img__text m--in">
+                    <h3>If you already has an account, just sign in.</h3>
+                </div>
+                <div class="img__btn">
+                    <button class="submit" style="width:200px;" onclick="window.location.href='/Login/'">Sign In</button>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <form method="post">
+                    <h2>Create your Account</h2>
+                    <label>
+                        <span>Name</span>
+                        @Html.TextBoxFor(x => x.name, new { @class = "form-control", @id = "name" })
+                        @*<input type="text" />*@
+                    </label>
+                    <label>
+                        <span>Surname</span>
+                        @Html.TextBoxFor(x => x.surname, new { @class = "form-control", @id = "adminSurname" })
+                        @*<input type="text" />*@
+                    </label>
+                    <label>
+                        <span>Username</span>
+                        @Html.TextBoxFor(x => x.nickname, new { @class = "form-control", @id = "adminName" })
+                        @*<input type="text" />*@
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        @Html.TextBoxFor(x => x.email, new { @class = "form-control", @id = "adminEmail", @type = "email" })
+                        @*<input type="email" />*@
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        @Html.TextBoxFor(x => x.password, new { @class = "form-control", @id = "adminPassword", @type = "password" })
+                        @*<input type="password" />*@
+                    </label>
+                    <button type="submit" class="submit">Sign Up</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

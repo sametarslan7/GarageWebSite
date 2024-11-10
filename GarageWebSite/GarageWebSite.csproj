@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,6 +185,10 @@
     <Content Include="garage\images\sales_bg.png" />
     <Content Include="garage\images\service_bg.jpg" />
     <Content Include="garage\index.html" />
+    <Content Include="garage\Login\salesbg.jpg" />
+    <Content Include="garage\Login\sign.css" />
+    <Content Include="garage\Login\sign.html" />
+    <Content Include="garage\Login\signup.css" />
     <Content Include="garage\newservice.js" />
     <Content Include="garage\script.js" />
     <Content Include="garage\service.js" />
@@ -246,6 +251,8 @@
     <Content Include="Views\Admin\GetAdmin.cshtml" />
     <Content Include="Views\Admin\GetCar.cshtml" />
     <Content Include="Views\Admin\GetPhoto.cshtml" />
+    <Content Include="Views\Login\Signup.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
