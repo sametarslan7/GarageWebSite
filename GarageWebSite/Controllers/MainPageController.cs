@@ -50,7 +50,16 @@ namespace GarageWebSite.Controllers
 
             return PartialView(carViewModels);
         }
-
+        public PartialViewResult FilterBrands()
+        {
+            var value = c.Brands.ToList();   
+            return PartialView(value);
+        }
+        public PartialViewResult FilterFuelTypes() 
+        {
+            var value=c.FuelTypes.ToList(); 
+            return PartialView(value);
+        }
 
     }
 }

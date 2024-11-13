@@ -44,12 +44,7 @@
                 <form id="filterForm" onsubmit="return false;">
                     <!-- Marka Filtreleme -->
                     <label for="brand">Brand</label>
-                    <select id="brand" name="brand">
-                        <option value="all">All</option>
-                        <option value="TOYOTA">TOYOTA</option>
-                        <option value="AUDI">AUDI</option>
-                        <option value="BMW">BMW</option>
-                    </select>
+                    @Html.Action("FilterBrands","MainPage")
 
                     <!-- Yıl Filtreleme -->
                     <label for="year">Year</label>
@@ -58,16 +53,13 @@
                         <option value="2021">2021</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
+                        <option value="2019">2018</option>
+                        <option value="2019">2017</option>
                     </select>
 
                     <!-- Yakıt Türü Filtreleme -->
                     <label for="fuel">Fuel Type</label>
-                    <select id="fuel" name="fuel">
-                        <option value="all">All</option>
-                        <option value="diesel">Diesel</option>
-                        <option value="electric">Electric</option>
-                        <option value="gasoline">Gasoline</option>
-                    </select>
+                    @Html.Action("FilterFuelTypes","MainPage")
 
                     <!-- Fiyat Aralığı Filtreleme -->
                     <label for="price">Price Range</label>

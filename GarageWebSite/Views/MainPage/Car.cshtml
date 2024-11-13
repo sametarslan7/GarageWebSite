@@ -8,6 +8,7 @@
 
     <div class="car-item"
          data-name="@x.Car.Name"
+         data-brand="@x.BrandName"
          data-image="@(x.Photos.FirstOrDefault() != null ? x.Photos.First().PhotoUrl : "default-image-url.jpg")"
          data-kilometre="@x.Car.Km KM"
          data-year="@x.Car.Year"
@@ -20,3 +21,4 @@
         <p class="price">Price: $@x.Car.Price</p>
     </div>
 }
+

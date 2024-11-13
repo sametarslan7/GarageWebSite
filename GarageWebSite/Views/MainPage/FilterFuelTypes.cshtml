@@ -1,0 +1,14 @@
+﻿@using GarageWebSite.Models.Classes
+@model List<FuelType>
+@{
+    Layout = null;
+}
+
+<select id="fuel" name="fuel">
+    <option value="all">All</option>
+    @foreach (var x in Model)
+    {
+        <option value="@x.FuelName">@x.FuelName</option>
+    }
+
+</select>
